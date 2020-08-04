@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pin-generator half-width">
+                    <input class="form-control" id = "genarateOutput" type="text">
+                    <button class="generate-btn" id = "genaratePinIcon" >Generate Pin</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-section half-width">
+
+                    <form Name= "calc">
+                    <input class="form-control" Name = "display" type="text" id = "tapPin">
+                    <div class="numbers">
+                        <div class="calc-body">
+                            <div class="calc-button-row">
+                                <input class = "button" type=button value="7" OnClick="calc.display.value+='7'">
+                                <input class = "button" type=button value="8" OnClick="calc.display.value+='8'">
+                                <input class = "button" type=button value="9" OnClick="calc.display.value+='9'">
+                            </div>
+                            <div class="calc-button-row">
+                                <input class = "button" type=button value="4" OnClick="calc.display.value+='4'">
+                                <input class = "button" type=button value="5" OnClick="calc.display.value+='5'">
+                                <input class = "button" type=button value="6" OnClick="calc.display.value+='6'">
+                            </div>
+                            <div class="calc-button-row">
+                              <input class = "button" type=button value="1" OnClick="calc.display.value+='1'">
+                              <input class = "button" type=button value="2" OnClick="calc.display.value+='2'">
+                              <input class = "button" type=button value="3" OnClick="calc.display.value+='3'">
+                            </div>
+                            <div class="calc-button-row">
+                                <input class = "button" type=button value="<" OnClick="calc.display.value+=''" id = "remove ">
+                                <input class = "button" type=button value="0" OnClick="calc.display.value+='0'">
+                                <input class = "button" type=button value="C" OnClick="calc.display.value+=''">
+                            </div>
+                        </form>
+
+                            <div>
+                                <button type="submit" class="submit-btn" id = "submitButton">Submit</button>
+                                <p class="action-left">3 try left</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notify-section">
+            <p class="notify" id = "failed">❌ Pin Didn't Match, Please try again</p>
+            <p class="notify" id ="success">✅ Pin Matched... Secret door is opening for you</p>
+        </div>
+    </div>
+
+    <script>
+    
+
+
+         //random 4 degit 
+         const degitButton = document.getElementById('genaratePinIcon').addEventListener('click',function(){ 
+            const randomDegit = document.getElementById('genarateOutput').innerText;
+            const randomDegitScreen =  Math.floor(1000 + Math.random() * 9000);
+            const finaltap = document.getElementById('genarateOutput').value = randomDegitScreen ;
+         
+         })
+         
+         //macthingPin
+         const randomPart = document.getElementById('genarateOutput').innerText;
+         const tapPinPart = document.getElementById('tapPin').innerText;
+         
+         
+
+          const failedArea =  document.getElementById('failed').style.display = 'none';
+          const successArea = document.getElementById('success').style.display = 'none';
+
+         document.getElementById('submitButton').addEventListener('click', function (){
+             if (randomPart = tapPinPart){
+                successArea.style.display = "block"
+             }
+             else{
+                failedArea.style.display = "block"
+             }
+         })
+ 
+
+        
+         
+    </script>
+
+</body>
+</html>
