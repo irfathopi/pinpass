@@ -19,7 +19,7 @@
             <div class="col-md-6">
                 <div class="input-section half-width">
 
-                    <form Name= "calc">
+                    <form Name= "calc" id = "fullForm">
                     <input class="form-control" Name = "display" type="text" id = "tapPin">
                     <div class="numbers">
                         <div class="calc-body">
@@ -41,19 +41,19 @@
                             <div class="calc-button-row">
                                 <input class = "button" type=button value="<" OnClick="calc.display.value+=''" id = "remove ">
                                 <input class = "button" type=button value="0" OnClick="calc.display.value+='0'">
-                                <input class = "button" type=button value="C" OnClick="calc.display.value+=''">
+                                <input class = "button" type=button value="C" OnClick="calc.display.value+=''" id = "reset">
                             </div>
                         </form>
 
                             <div>
-                                <button type="submit" class="submit-btn" id = "submitButton">Submit</button>
+                                <div  class="submit-btn" id = "submitButton">Submit</div>
                                 <p class="action-left">3 try left</p>
                             </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="notify-section">
+        <div class="notify-section " id = "alertButton" >
             <p class="notify" id = "failed">❌ Pin Didn't Match, Please try again</p>
             <p class="notify" id ="success">✅ Pin Matched... Secret door is opening for you</p>
         </div>
@@ -71,23 +71,28 @@
          
          })
          
-         //macthingPin
-         const randomPart = document.getElementById('genarateOutput').innerText;
-         const tapPinPart = document.getElementById('tapPin').innerText;
-         
-         
 
-          const failedArea =  document.getElementById('failed').style.display = 'none';
-          const successArea = document.getElementById('success').style.display = 'none';
 
-         document.getElementById('submitButton').addEventListener('click', function (){
-             if (randomPart = tapPinPart){
-                successArea.style.display = "block"
+         //macthingPinAlert
+          document.getElementById('success').style.display = "none";
+          document.getElementById('failed').style.display = "none";
+
+         document.getElementById("submitButton").addEventListener('click',function(){
+             var randomNumber = document.getElementById("genarateOutput").value;
+             var genarateNumber = document.getElementById("tapPin").value;
+            
+            if   (randomNumber == genarateNumber){
+                document.getElementById('success').style.display = "block";
+                document.getElementById('failed').style.display = "none";
              }
+
              else{
-                failedArea.style.display = "block"
+                document.getElementById('failed').style.display = "block";
+                document.getElementById('success').style.display = "none";
              }
          })
+
+         
  
 
         
